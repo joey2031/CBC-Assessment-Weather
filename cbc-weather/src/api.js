@@ -25,7 +25,7 @@ let queryString = `query {
         }
       }
     }
-  }`
+  }`;
 
 // Function call to the api
 export default class Api {

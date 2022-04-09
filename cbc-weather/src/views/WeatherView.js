@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 import { loadWeather } from "../actions/actions";
 
 class WeatherView extends React.Component {
+
+    // state = {
+    //     data: []
+    // };
+
     componentDidMount() {
         this.props.loadWeather();
-        console.log(this.props.data);
+        //this.setState({ data: this.props.loadWeather() })
     };
 
     render() {
@@ -19,23 +24,28 @@ class WeatherView extends React.Component {
         }
 
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>body</th>
-                        <th>post id</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* {this.props.data.map(u => // Will update this later
-                        <tr key={u.id}>
-                            <td>{u.body}</td>
-                            <td>{u.postId}</td>
+
+            <div>
+                <button onClick={() => { console.log(this.state.data) }}>Click me</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>body</th>
+                            <th>post id</th>
                         </tr>
-                    )} */}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {this.props.data.map(u =>// Cannot read properties of undefined (reading 'map')
+                        <tr key={u.id}>
+                            <td>joey</td>
+                            <td>Joey</td>
+                        </tr>
+                    )}
+                    </tbody>
+                </table>
+            </div>
+
         );
     }
 }
@@ -51,7 +61,4 @@ const mapDispatchToProps = {
     loadWeather
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(WeatherView);
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherView);

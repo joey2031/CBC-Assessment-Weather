@@ -5,12 +5,18 @@ import { loadWeather } from "../actions/actions";
 
 class WeatherView extends React.Component {
 
-    // state = {
-    //     data: []
-    // };
+    state = {
+        data: []
+    };
 
     componentDidMount() {
-        this.props.loadWeather();
+        const { loadWeather } = this.props;
+        // at this point its empty
+        console.log(this.props);
+        console.log(loadWeather);
+
+        //this.setState({data: this.props.loadWeather()}); // get a promise object
+        //this.props.loadWeather(); // like this it is empty
         //this.setState({ data: this.props.loadWeather() })
     };
 
@@ -26,7 +32,7 @@ class WeatherView extends React.Component {
         return (
 
             <div>
-                <button onClick={() => { console.log(this.state.data) }}>Click me</button>
+                <button onClick={() => { console.log(this.props.data); console.log(this.state.data) }}>Click me</button>
                 <table>
                     <thead>
                         <tr>
@@ -36,12 +42,12 @@ class WeatherView extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.data.map(u =>// Cannot read properties of undefined (reading 'map')
-                        <tr key={u.id}>
-                            <td>joey</td>
-                            <td>Joey</td>
-                        </tr>
-                    )}
+                        {this.props.data.map(l => // now its empty
+                            <tr key={l.id}>
+                                <td>joey</td>
+                                <td>Joey</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

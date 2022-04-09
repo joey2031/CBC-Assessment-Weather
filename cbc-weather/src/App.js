@@ -1,4 +1,4 @@
-import WeatherView from "./WeatherView";
+import WeatherView from "./views/WeatherView";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 // Component where we render the data
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { loadWeather } from "./actions/actions";
+import { loadWeather } from "../actions/actions";
 
 class WeatherView extends React.Component {
     componentDidMount() {
@@ -28,12 +28,12 @@ class WeatherView extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.data.map(u => // Will update this later
+                    {/* {this.props.data.map(u => // Will update this later
                         <tr key={u.id}>
                             <td>{u.body}</td>
                             <td>{u.postId}</td>
                         </tr>
-                    )}
+                    )} */}
                 </tbody>
             </table>
         );

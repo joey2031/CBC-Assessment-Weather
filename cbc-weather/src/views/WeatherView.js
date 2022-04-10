@@ -8,8 +8,6 @@ class WeatherView extends React.Component {
     componentDidMount() {
         // can get location and pass it here...
         this.props.loadWeather(); // this makes it load 
-        // we cant log it as this point can only log it on button click and loop through it
-        // problem: API does not return an array.
     };
 
     render() {
@@ -25,23 +23,25 @@ class WeatherView extends React.Component {
             <div>
                 <button onClick={() => {
                     console.log(this.props.data);
-                    console.log(Object.keys(this.props));
-                    }}>Click me</button>
+                    console.log(this.props.data.data);
+                    console.log(this.props.data.data.getCityByName);
+                    console.log(this.props.data.data.getCityByName.name);
+                    console.log(this.props.data.data.getCityByName.country);
+                    console.log(this.props.data.data.getCityByName.weather);
+                    console.log(this.props.data.data.getCityByName.weather.summary);
+                    console.log(this.props.data.data.getCityByName.weather.summary.description);
+                }}>Click me</button>
                 <table>
                     <thead>
                         <tr>
                             <th>id</th>
                             <th>body</th>
                             <th>post id</th>
+                            {/* <th>{this.props.data.data.getCityByName.name}</th> */}
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {this.props.data.map(l => // I can't map it, dont think its an array
-                            <tr key={l.id}>
-                                <td>joey</td>
-                                <td>Joey</td>
-                            </tr>
-                        )} */}
+
                     </tbody>
                 </table>
             </div>

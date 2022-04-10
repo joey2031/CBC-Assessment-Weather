@@ -23,9 +23,8 @@ class WeatherView extends React.Component {
     };
 
     getLocation() {
-        let API_KEY = "fee01509d6eec36862142ebfab87e034"
         navigator.geolocation.getCurrentPosition(p => {
-            fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${p.coords.latitude}&lon=${p.coords.longitude}&limit=3&appid=${API_KEY}`)
+            fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${p.coords.latitude}&lon=${p.coords.longitude}&limit=3&appid=${process.env.REACT_APP_API_KEY}`)
                 .then(res => res.json())
                 .then(data => {
                     this.props.loadWeather(data[0].name);

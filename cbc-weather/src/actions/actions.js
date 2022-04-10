@@ -10,7 +10,7 @@ export const loadWeather = (location) => dispatch => {
     Api.getWeather()
         .then(response => response.json())
         .then(
-            info => dispatch({ type: LOAD_WEATHER_SUCCESS, data: info }), // at first just said data
+            info => dispatch({ type: LOAD_WEATHER_SUCCESS, data: info }), 
             error => dispatch({ type: LOAD_WEATHER_ERROR, error: error.message || 'Unexpected Error!!!' })
         )
  };

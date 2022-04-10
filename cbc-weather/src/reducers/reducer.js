@@ -6,7 +6,7 @@ const initialState = {
     error: ''
 };
 
-export default function reduxThunkReducer(state = initialState, action) {
+export default function appReducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_WEATHER_LOADING: {
             return {

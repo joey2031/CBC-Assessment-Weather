@@ -37,29 +37,30 @@ class WeatherView extends React.Component {
     }
 
     getData = () => {
+        const city = this.props.data.data.getCityByName;
+        const weather = this.props.data.data.getCityByName.weather;
         return this.setState({
-            cityName: this.props.data.data.getCityByName.name,
-            countryName: this.props.data.data.getCityByName.country,
-            humidity: this.props.data.data.getCityByName.weather.clouds.humidity,
-            description: this.props.data.data.getCityByName.weather.summary.description,
-            icon: this.props.data.data.getCityByName.weather.summary.icon,
-            actual: this.props.data.data.getCityByName.weather.temperature.actual,
-            feelsLike: this.props.data.data.getCityByName.weather.temperature.feelsLike,
-            windSpeed: this.props.data.data.getCityByName.weather.wind.speed
+            cityName: city.name,
+            countryName: city.country,
+            humidity: weather.clouds.humidity,
+            description: weather.summary.description,
+            icon: weather.summary.icon,
+            actual: weather.temperature.actual,
+            feelsLike: weather.temperature.feelsLike,
+            windSpeed: weather.wind.speed
         });
     }
 
     render() {
         if (this.props.loading) {
-            return <div>Loading</div>
+            return 'Loading'
         }
 
         if (this.props.error) {
             return <div style={{ color: 'red' }}>ERROR: {this.props.error}</div>
         }
         return (
-
-            <div>
+            <>
                 <button onClick={() => { this.callAPI(); this.getData(); }}>Get Weather/refresh info</button>
                 <table>
                     <thead>
@@ -84,12 +85,11 @@ class WeatherView extends React.Component {
                         <td><img alt="" src={`https://openweathermap.org/img/w/${this.state.icon}.png`}></img></td>
                     </tbody>
                 </table>
-            </div>
+            </>
 
         );
     }
 }
-
 
 const mapStateToProps = state => ({
     data: state.data,

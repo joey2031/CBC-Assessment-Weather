@@ -1,4 +1,8 @@
-import { LOAD_WEATHER_ERROR, LOAD_WEATHER_LOADING, LOAD_WEATHER_SUCCESS } from "../actions/actions";
+import {
+    LOAD_WEATHER_ERROR,
+    LOAD_WEATHER_LOADING,
+    LOAD_WEATHER_SUCCESS
+} from "../actions/loadWeatherStatus";
 
 const initialState = {
     data: [],

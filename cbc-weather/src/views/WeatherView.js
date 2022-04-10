@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 import { connect } from 'react-redux';
 import { loadWeather } from "../actions/actions";
 
@@ -11,7 +11,7 @@ class WeatherView extends React.Component {
             countryName: "",
             humidity: "",
             description: "",
-            icon: "", 
+            icon: "",
             actual: "",
             feelsLike: "",
             windSpeed: ""
@@ -19,12 +19,22 @@ class WeatherView extends React.Component {
     }
 
     componentDidMount() {
-        // can get location and pass it here...
-        this.props.loadWeather();      
+        this.getLocation();
     };
 
+    getLocation() {
+        let API_KEY = "fee01509d6eec36862142ebfab87e034"
+        navigator.geolocation.getCurrentPosition(p => {
+            fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${p.coords.latitude}&lon=${p.coords.longitude}&limit=3&appid=${API_KEY}`)
+                .then(res => res.json())
+                .then(data => {
+                    this.props.loadWeather(data[0].name);
+                })
+        })
+    }
+
     callAPI() {
-        this.props.loadWeather();
+        this.getLocation();
     }
 
     // https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
@@ -52,6 +62,8 @@ class WeatherView extends React.Component {
         return (
 
             <div>
+                {/* <button onClick={() => { this.getLocation(); }}>Get geolocation</button> */}
+
                 <button onClick={() => { this.callAPI(); this.getData(); }}>Get Weather/refresh info</button>
                 <table>
                     <thead>

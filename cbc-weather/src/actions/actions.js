@@ -5,9 +5,8 @@ export const LOAD_WEATHER_ERROR = 'LOAD_WEATHER_ERROR';
 
 // Working.
 export const loadWeather = (location) => dispatch => {
-    // console.log(location); Will do city later
     dispatch({ type: LOAD_WEATHER_LOADING });
-    Api.getWeather()
+    Api.getWeather(location)
         .then(response => response.json())
         .then(
             info => dispatch({ type: LOAD_WEATHER_SUCCESS, data: info }), 

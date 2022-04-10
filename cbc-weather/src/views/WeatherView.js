@@ -1,4 +1,3 @@
-// Component where we render the data
 import React from 'react'; 
 import { connect } from 'react-redux';
 import { loadWeather } from "../actions/actions";
@@ -12,7 +11,7 @@ class WeatherView extends React.Component {
             countryName: "",
             humidity: "",
             description: "",
-            icon: "", // not sure about this add later?
+            icon: "", 
             actual: "",
             feelsLike: "",
             windSpeed: ""
@@ -21,7 +20,7 @@ class WeatherView extends React.Component {
 
     componentDidMount() {
         // can get location and pass it here...
-        this.props.loadWeather(); // this makes it load        
+        this.props.loadWeather();      
     };
 
     callAPI() {

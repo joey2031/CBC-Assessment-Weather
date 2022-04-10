@@ -5,19 +5,11 @@ import { loadWeather } from "../actions/actions";
 
 class WeatherView extends React.Component {
 
-    state = {
-        data: []
-    };
-
     componentDidMount() {
-        const { loadWeather } = this.props;
-        // at this point its empty
-        console.log(this.props);
-        console.log(loadWeather);
-
-        //this.setState({data: this.props.loadWeather()}); // get a promise object
-        //this.props.loadWeather(); // like this it is empty
-        //this.setState({ data: this.props.loadWeather() })
+        // can get location and pass it here...
+        this.props.loadWeather(); // this makes it load 
+        // we cant log it as this point can only log it on button click and loop through it
+        // problem: API does not return an array.
     };
 
     render() {
@@ -28,11 +20,13 @@ class WeatherView extends React.Component {
         if (this.props.error) {
             return <div style={{ color: 'red' }}>ERROR: {this.props.error}</div>
         }
-
         return (
 
             <div>
-                <button onClick={() => { console.log(this.props.data); console.log(this.state.data) }}>Click me</button>
+                <button onClick={() => {
+                    console.log(this.props.data);
+                    console.log(Object.keys(this.props));
+                    }}>Click me</button>
                 <table>
                     <thead>
                         <tr>
@@ -42,12 +36,12 @@ class WeatherView extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.data.map(l => // now its empty
+                        {/* {this.props.data.map(l => // I can't map it, dont think its an array
                             <tr key={l.id}>
                                 <td>joey</td>
                                 <td>Joey</td>
                             </tr>
-                        )}
+                        )} */}
                     </tbody>
                 </table>
             </div>

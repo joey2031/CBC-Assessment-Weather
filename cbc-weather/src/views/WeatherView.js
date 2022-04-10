@@ -37,7 +37,6 @@ class WeatherView extends React.Component {
         this.getLocation();
     }
 
-    // https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
     getData = () => {
         return this.setState({
             cityName: this.props.data.data.getCityByName.name,
@@ -62,8 +61,6 @@ class WeatherView extends React.Component {
         return (
 
             <div>
-                {/* <button onClick={() => { this.getLocation(); }}>Get geolocation</button> */}
-
                 <button onClick={() => { this.callAPI(); this.getData(); }}>Get Weather/refresh info</button>
                 <table>
                     <thead>

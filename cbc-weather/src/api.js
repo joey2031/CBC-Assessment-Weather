@@ -1,4 +1,3 @@
-// Function call to the api
 export default class Api {
   static getWeather(city) {
     return fetch('http://localhost:4000', {

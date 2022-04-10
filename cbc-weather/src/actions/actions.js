@@ -1,6 +1,4 @@
 import Api from '../api';
-
-// Later will separate action creators
 export const LOAD_WEATHER_LOADING = 'LOAD_WEATHER_LOADING';
 export const LOAD_WEATHER_SUCCESS = 'LOAD_WEATHER_SUCCESS';
 export const LOAD_WEATHER_ERROR = 'LOAD_WEATHER_ERROR';
@@ -17,8 +15,4 @@ export const loadWeather = (location) => dispatch => {
         )
  };
 
-
-// Maybe look at these later?
-// https://codesandbox.io/s/1xkqw2jp7?file=/src/actions/locations.js:508-516
-// https://codesandbox.io/s/1xkqw2jp7
 

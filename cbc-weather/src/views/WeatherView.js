@@ -1,5 +1,5 @@
 // Component where we render the data
-import * as React from 'react';
+import React from 'react'; 
 import { connect } from 'react-redux';
 import { loadWeather } from "../actions/actions";
 
@@ -23,6 +23,10 @@ class WeatherView extends React.Component {
         // can get location and pass it here...
         this.props.loadWeather(); // this makes it load        
     };
+
+    callAPI() {
+        this.props.loadWeather();
+    }
 
     // https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
     getData = () => {
@@ -49,7 +53,7 @@ class WeatherView extends React.Component {
         return (
 
             <div>
-                <button onClick={() => { this.getData() }}>Click me</button>
+                <button onClick={() => { this.callAPI(); this.getData(); }}>Get Weather/refresh info</button>
                 <table>
                     <thead>
                         <tr>
@@ -57,7 +61,6 @@ class WeatherView extends React.Component {
                             <th>Country name</th>
                             <th>Humidity</th>
                             <th>Description</th>
-                            <th>Icon</th>
                             <th>Actual</th>
                             <th>Feels Like</th>
                             <th>wind Speed</th>
@@ -68,10 +71,10 @@ class WeatherView extends React.Component {
                         <td>{this.state.countryName}</td>
                         <td>{this.state.humidity}</td>
                         <td>{this.state.description}</td>
-                        <td>{this.state.icon}</td>
                         <td>{this.state.actual}</td>
                         <td>{this.state.feelsLike}</td>
                         <td>{this.state.windSpeed}</td>
+                        <td><img alt="" src={`https://openweathermap.org/img/w/${this.state.icon}.png`}></img></td>
                     </tbody>
                 </table>
             </div>

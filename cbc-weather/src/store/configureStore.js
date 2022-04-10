@@ -5,7 +5,6 @@ import reduxThunkReducer from '../reducers/reducer'
 export function configureStore(initialState) {
     const middleware = [thunk];
 
-    // Also configured redux dev tools
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const store = createStore(reduxThunkReducer, initialState, composeEnhancers(applyMiddleware(...middleware)));
 
